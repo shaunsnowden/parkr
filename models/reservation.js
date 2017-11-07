@@ -6,7 +6,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
 		},
 		createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
+		updatedAt: DataTypes.DATE,
+		expiresAt: DataTypes.DATE
   });
 
 	Reservation.associate = function(models) {

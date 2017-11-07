@@ -10,8 +10,21 @@ values ("Colorado Women's College", "1901 E Asbury Ave", "Denver", "CO", "80208"
 
 SELECT * FROM parkingspots;
 
-INSERT INTO reservations (duration, createdAt, updatedAt, ParkingspotID, UserID)
-values (2, CURTIME(), CURTIME(), 1, 2),
-(3, CURTIME(), CURTIME(), 2, 1);
+--  added ADDTIME() function to autocalculate the time at which the reservation will expire
+INSERT INTO reservations (duration, createdAt, updatedAt, expiresAt, ParkingspotID, UserID)
+values (2, CURTIME(), CURTIME(), addtime(CURTIME(),"02:00:00"),1, 2),
+(3, CURTIME(), CURTIME(), addtime(CURTIME(),"03:00:00"), 2, 1);
+
+-- will need to use following HTML input field to ensure duration entered for reservation is properly formatted for mySQL ADDTIME() function: 
+                    -- <form>
+                    --   <div>
+                    --     <label for="duration">Choose an reservation duration: </label>
+                    --     <input id="duration" type="time" name="duration" required>
+                    --     <span class="validity"></span>
+                    --   </div>
+                    --   <div>
+                    --       <input type="submit" value="Submit form">
+                    --   </div>
+                    -- </form>
 
 SELECT * FROM reservations;
