@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "root",
-    "password": "1234",
+    "password": "Interlopers2!",
     "database": "parkr_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "1234",
-    "database": "database_test",
+    "password": "Interlopers2!",
+    "database": "parker_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "1234",
+    "password": "Interlopers2!",
     "database": "database_production",
     "host": "localhost",
     "dialect": "mysql"
