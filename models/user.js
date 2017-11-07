@@ -1,8 +1,8 @@
 // Requiring bcrypt for password hashing. Using the bcrypt-nodejs version as the regular bcrypt module
 // sometimes causes errors on Windows machines
 var bcrypt = require("bcrypt-nodejs");
-// Creating our User model
 module.exports = function(sequelize, DataTypes) {
+  // Creating our User model
   var User = sequelize.define("User", {
     // The email cannot be null, and must be a proper email before creation
     email: {
@@ -20,6 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     license_plate: {
       type: DataTypes.STRING,
+      allowNull: false
     },
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
@@ -31,5 +32,14 @@ module.exports = function(sequelize, DataTypes) {
   User.hook("beforeCreate", function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
+
+	User.associate = function(models) {
+		// Associating Author with Posts
+		// When an Author is deleted, also delete any associated Posts
+		User.hasMany(models.Reservation, {
+			onDelete: 'cascade'
+		});
+	};
+
   return User;
 };
