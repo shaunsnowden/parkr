@@ -1,54 +1,31 @@
-const express = require('express');
-var router = express.Router();
+// Requiring necessary npm packages
+var express = require("express");
+var bodyParser = require("body-parser");
+var session = require("express-session");
+// Requiring passport as we've configured it
+var passport = require("./config/passport");
 
-const path = require('path');
-const bodyParser = require('body-parser');
-const methodOverride = require('method-override');
-const dateFormat = require('dateformat');
-const exphbs = require('express-handlebars');
+// Setting up port and requiring models for syncing
+var PORT = process.env.PORT || 8080;
+var db = require("./models");
 
-// const router = require('./routes/api-routes.js');
-// var connection = require('./config/connection.js');
-
-var port = process.env.PORT || 8010;
-var now = new Date();
-
+// Creating express app and configuring middleware needed for authentication
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(methodOverride('_method'));
-
-// Tells the system to use JSON
 app.use(bodyParser.json());
+app.use(express.static("public"));
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Handlebars setup and initiate the home page
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-app.get('/',function(req,res){
-    res.render('main');
-});
+// Requiring our routes
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
-app.post('/create', function (req, res) {
-  connection.query("************", ["..............."], function (err, result) {
-    if (err) throw err;
-    res.redirect('/');
+// Syncing our database and logging a message to the user upon success
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
 });
-
-app.put('/update', function (req, res) {
-  connection.query('********', ["********"], function (err, results) {
-    if (err) throw err;
-    console.log("\n" + "*******" + "\n");
-    res.redirect('/');
-  });
-});
-
-// app.use('/', router);
-
-// Expose the public directory to access all files
-app.use(express.static(path.join(__dirname, 'public')));
-// https://expressjs.com/en/starter/static-files.html
-
-//launch ======================================================================
-app.listen(port);
-console.log('\nGettin busy on port ' + port);
-
