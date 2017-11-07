@@ -6,7 +6,15 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
 
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
+     // create initial data by performing initial database query for all available parking spaces
+    // create object to hold that data
+    // call the object in the res.render
+    // index.handlebars will refernce the object
+    res.render("index");
+  });
+  
+  app.get("/signup", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/members");
