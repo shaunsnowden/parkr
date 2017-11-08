@@ -31,6 +31,31 @@ module.exports = function(app) {
     });
   });
 
+// START SHITTY CODE =============================
+// API Route to get all parking spots
+app.get('/parkingspots', function(req, res) {
+  // Here we add an 'include' property to our options in our findAll query
+  // We set the value to an array of the models we want to include in a left outer join
+  // In this case, just db.Post
+  db.Parkingspot.findAll({})
+  .then(function(dbParkingspot) {
+    res.json(dbParkingspot);
+  });
+});
+
+// API Route to get reservation data for just a single user
+app.get('/user_reservations', function(req, res) {
+  // Here we add an 'include' property to our options in our findAll query
+  // We set the value to an array of the models we want to include in a left outer join
+  // In this case, just db.Post
+  db.User.findAll({
+    include: [db.Reservation]
+    }).then(function(dbUser) {
+    res.json(dbUser);
+  });
+});
+// END SHITTY CODE =============================
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();
@@ -49,7 +74,8 @@ module.exports = function(app) {
       res.json({
         email: req.user.email,
         id: req.user.id,
-        license_plate: req.user.license_plate
+        license_plate: req.user.license_plate,
+        // expiresAt: req.reservation.expiresAt
       });
     }
   });
