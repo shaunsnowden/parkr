@@ -1,11 +1,14 @@
 <header>
   <nav>
     <div class="nav-wrapper blue-grey darken-4">
-      <i class="fa fa-car fa-5x" aria-hidden="true" id=logo-icon></i>
+      <i class="fa fa-car fa-4x" aria-hidden="true" id=logo-icon></i>
       <a href="/" class="brand-logo" id="logo">PARKR </a>
       <ul class="right hide-on-med-and-down" id="head-nav-links">
         <li>
           <a href="/login">Login</a>
+        </li>
+        <li>
+          <a href="/signup">Sign Up</a>
         </li>
       </ul>
     </div>
@@ -21,7 +24,7 @@
     <div class="card-panel hoverable">
       <h3>User Profile</h3>
       <p>
-        <h4><div id="userName">User Name</div></h4>
+        <h4><i class="large material-icons">face</i><div id="userName">User Name</div></h4>
       </p>
       <p>
         <h5>Current Reservation:</h5>
@@ -29,13 +32,13 @@
       </p>
       <br>
       <a href="/">
-        <button class="btn waves-effect waves-light" type="submit" name="action">Extend Reservation
+        <button class="btn waves-effect waves-light" type="submit" name="action" id="extendButton">Extend Reservation
           <i class="material-icons right">add_circle</i>
         </button>
       </a>
       </br>
       <a href="/">
-        <button class="btn waves-effect waves-light" type="submit" name="action">Cancel Reservation
+        <button class="btn waves-effect waves-light" type="submit" name="action" id="cancelButton">Cancel Reservation
           <i class="material-icons right">delete_sweep</i>
         </button>
       </a>
@@ -46,19 +49,19 @@
     <h2>On Demand Parking</h2>
     <div id="mainpanel-content">
       <div id="mapWrapper">mapWrapper
-        <div id="mapDivTarget">TARGET DIV FOR MAP</div>
+        <div id="map">TARGET DIV FOR MAP</div>
       </div>
       <div class="divider"></div>
 
       <div id="spotListingWrapper">
+
         <p>Spot Listing Wrapper</p>
+
         <div id="parkingSpotList">
           Parking Spot List - To be populated by HB
         </div>
       </div>
-
-
-      
+      </div>
     </div>
   </div>
 </div>
@@ -66,5 +69,27 @@
 <div class="row">
   <div class="col l6">
 
+  </div>
+</div>
+
+<!-- Modal Structures -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <h4>Login Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="/" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
+
+<!-- Modal Structures -->
+<div id="signUpModal" class="modal">
+  <div class="modal-content">
+    <h4>Sign Up Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="/" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
   </div>
 </div>

@@ -3,10 +3,14 @@ form.login {
   margin-top: 50px;
 };
 
-#mapDivTarget{
+#map{
   height:200pt;
   margin:0;
   padding:0;
   width:400pt;
   background-color: black;
 };
+
+.button, .btn, #extendButton, #cancelButton {
+  margin: 15pt;
+}
