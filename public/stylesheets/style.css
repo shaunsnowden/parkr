@@ -3,9 +3,10 @@ form.login {
   margin-top: 50px;
 };
 
-#map-canvas{
-  height:100%;
+#mapDivTarget{
+  height:200pt;
   margin:0;
   padding:0;
-  width:100%;
+  width:400pt;
+  background-color: black;
 };
