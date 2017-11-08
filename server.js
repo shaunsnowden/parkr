@@ -17,8 +17,8 @@ var db = require("./models");
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
-// app.use('/static', express.static(path.join(__dirname, 'public')));
+// app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 // We need to use sessions to keep track of our user's login status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
