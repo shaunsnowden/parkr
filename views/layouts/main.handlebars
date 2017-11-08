@@ -28,9 +28,6 @@
   <!--Favicon Code-->
   {{!-- <link href="***********" rel="icon" type="image/png"> --}}
 
-
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlIWszXZSUTvXdYpLrNSSAVFU7YbIHRdY&libraries=places&callback=initMap" async defer></script>
-
   <!-- Map javascript reference -->
   <script src="../js/mapScript.js"></script>
   
@@ -42,8 +39,24 @@
 
   {{{body}}}
 
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
 
+<!-- Modal Structures -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Login Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="/" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
 
+{{!-- Google Maps API call --}}
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlIWszXZSUTvXdYpLrNSSAVFU7YbIHRdY&callback=initMap">
+  </script>
 </body>
 
 </html>
