@@ -1,8 +1,11 @@
+initMap();
+
 $(document).ready(function () {
 
-  var googlePlacesKey = "AIzaSyBFRWN8PVL2qv6q8xUl096GVi-Lp5TDdeQ";
+  var googlePlacesKey = "AIzaSyAL-Y_GGyVxFIhxAduTunpcZ7p2UE2QOhE";
+  
+  console.log("\n MapScript imported!");
 
-  initMap();
   // Press Genre Button
 
   $(".waves-effect.waves-light.btn").on("click", function (event) {
@@ -49,7 +52,7 @@ $(document).ready(function () {
         };
 
         // Fire up Google Maps
-        map = new google.maps.Map(document.getElementById('relatedVenues'), mapOptions);
+        map = new google.maps.Map(document.getElementById('parkingMap'), mapOptions);
 
         var locationLatLong = { lat: userCords.latitude, lng: userCords.longitude };
 
@@ -113,4 +116,4 @@ function createMarker(place) {
     infowindow.setContent(place.name);
     infowindow.open(map, this);
   });
-}
+};

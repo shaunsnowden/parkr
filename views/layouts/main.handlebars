@@ -11,7 +11,7 @@
   <script src="https://use.fontawesome.com/b38c8ed4c7.js"></script>
 
   <!-- Link to reset stylesheet -->
-  <link rel="stylesheet" href="../public/stylesheets/reset.css">
+  <link rel="stylesheet" href="../stylesheets/reset.css">
 
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,17 +23,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script> 
   
   
-  <link rel='stylesheet' href='/../public/stylesheets/style.css'>
+  <link rel='stylesheet' href='../stylesheets/style.css'>
 
   <!--Favicon Code-->
   <link href="***********" rel="icon" type="image/png">
 
   <!-- GooglePlace API  -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFRWN8PVL2qv6q8xUl096GVi-Lp5TDdeQ&libraries=places&callback=initMap"
-    async defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  {{!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initMap"></script> --}}
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL-Y_GGyVxFIhxAduTunpcZ7p2UE2QOhE&libraries=places&callback=initMap" async defer></script>
+  {{!-- Need to periodically re-enable --}}
   
   <!-- Map javascript reference -->
-  <script src="../public/js/mapScript.js"></script>
+  <script src="../js/mapScript.js"></script>
   
 
 </head>
@@ -42,11 +44,7 @@
 
   {{{body}}}
 
-  <script>
-    $(".submit").click(function (event) {
-      event.preventDefault();
-    });
-  </script>
+
 
 </body>
 
