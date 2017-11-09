@@ -51,14 +51,28 @@
       <div id="mapWrapper" style="width:100%;height:500px;">mapWrapper
         <div id="map" style="width:100%;height:100%;">TARGET DIV FOR MAP</div>
       </div>
+      <br>
       <div class="divider"></div>
-
+      <br>
       <div id="spotListingWrapper">
 
         <p>Spot Listing Wrapper</p>
 
         <div id="parkingSpotList">
           Parking Spot List - To be populated by HB
+          <ul>
+            {{#each dbParkingspot}} 
+              <br>
+              <li>
+                <p>{{this.id}}. {{this.parking_name}}</p>
+                {{!-- <form method="POST" action="/update?_method=PUT">
+                  <textarea type="text" name="eatenBy" burgerID="{{this.id}}" placeholder="Name of User"></textarea>
+                  
+                </form> --}}
+                <button type="submit" parkingID={{this.id}}>Reserve Spot</button>
+              </li>
+            {{/each}}
+          </ul>
         </div>
       </div>
       </div>
@@ -66,13 +80,7 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col l6">
-
-  </div>
-</div>
-
-<!-- Modal Structures -->
+{{!-- <!-- Modal Structures -->
 <div id="loginModal" class="modal">
   <div class="modal-content">
     <h4>Login Header</h4>
@@ -92,4 +100,4 @@
   <div class="modal-footer">
     <a href="/" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
   </div>
-</div>
+</div> --}}

@@ -22,12 +22,13 @@ $(document).ready(function() {
     passwordInput.val("");
   });
 
-  // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+  // loginUser does a post to our "api/login" route and if successful, redirects us the the members page. Feeds object to /api/login from the front side.  To see the rest, need to go and see the backside for how this is processing.
   function loginUser(email, password) {
     $.post("/api/login", {
       email: email,
       password: password
     }).then(function(data) {
+      // this data object is what is being served by the backend.
       window.location.replace(data);
       // If there's an error, log the error
     }).catch(function(err) {
