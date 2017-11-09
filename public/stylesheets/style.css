@@ -14,3 +14,7 @@ form.login {
 .button, .btn, #extendButton, #cancelButton {
   margin: 15pt;
 }
+
+body{
+  background-color: rgba(102, 238, 245, 0.26);
+}

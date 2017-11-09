@@ -1,5 +1,7 @@
 // Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
+var db = require("../models");
+var passport = require("../config/passport");
 
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
@@ -10,8 +12,16 @@ module.exports = function(app) {
      // create initial data by performing initial database query for all available parking spaces
     // create object to hold that data
     // call the object in the res.render
-    // index.handlebars will refernce the object
-    res.render("index");
+    // index.handlebars will refernce the object !!!!!!!!!!!!!!!!!!!!
+    console.log("\nTEST::::::::::::::::::::::;\n")
+    db.Parkingspot.findAll({})
+      .then(function (dbParkingspot) {
+        // res.json(dbParkingspot);
+        res.render('index', { dbParkingspot });
+      });
+    
+    // Render home page
+    // res.render("index");
   });
   
   app.get("/signup", function(req, res) {
