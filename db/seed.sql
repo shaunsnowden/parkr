@@ -1,3 +1,5 @@
+use parker_db;
+
 INSERT INTO users (email, password, license_plate, createdAt, updatedAt)
 values ("justin@email.com", "1234", "1234-ASDJ", CURTIME(), CURTIME()),
 ("shaun@email.com", "1234", "F8K-P0J", CURTIME(), CURTIME());
