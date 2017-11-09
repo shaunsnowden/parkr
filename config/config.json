@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "1234",
+    "password": "Interlopers2!",
     "database": "parkr_db",
     "host": "localhost",
     "dialect": "mysql"
