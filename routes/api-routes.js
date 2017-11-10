@@ -35,12 +35,8 @@ module.exports = function (app) {
     });
   });
 
-  // START SHITTY CODE =============================
   // API Route to get all parking spots
   app.get('/parkingspots', function (req, res) {
-    // Here we add an 'include' property to our options in our findAll query
-    // We set the value to an array of the models we want to include in a left outer join
-    // In this case, just db.Post
     db.Parkingspot.findAll({})
       .then(function (dbParkingspot) {
         res.json(dbParkingspot);
