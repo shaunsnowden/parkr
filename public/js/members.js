@@ -7,8 +7,25 @@ $(document).ready(function () {
     $(".car-make").text(data.car_make);
     $(".car-model").text(data.car_model);
     $(".car-color").text(data.car_color);
-    // data.Reservations.forEach((reservation) => {
-    //   $(".parking-name").append(reservation.Parkingspot.parking_name);
-    // })
   });
+
+// START CODE IN DEVELOPMENT ==============================================================================
+    // This function makes a new reservation in our database
+    function newReservation(Parkingspot) {
+      $.ajax({
+        method: "PUT",
+        url: "/newreservation",
+        data: Parkingspot
+      }).done(getParkingspot);
+    }
+
+    // This function cancels a reservation in our database
+    function cancelReservation(Parkingspot) {
+      $.ajax({
+        method: "PUT",
+        url: "/cancelreservation",
+        data: Parkingspot
+      }).done(getParkingspot);
+    }
+// END CODE IN DEVELOPMENT ==============================================================================
 });

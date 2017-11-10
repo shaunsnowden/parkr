@@ -63,4 +63,43 @@ module.exports = function (app) {
     }
   });
 
+  // START CODE IN DEVELOPMENT ==============================================================================
+
+  // PUT route for updating reservations. We can get the updated data from req.body
+  app.put("/newreservation", function(req, res) {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Parkingspot.update({
+      reservation_status: 1, // this will udpate the status in the parkingspots table to 1 (i.e., reserved)
+      reservation_start: req.body.reservation_start, // Shaun - we need to add a <input id="datetime" type="datetime-local"> to collect this data
+      reservation_end: req.body.reservation_end, // Shaun - we need to add a <input id="datetime" type="datetime-local"> to collect this data
+      user_email: req.user.email // Shaun - I'm not exactly sure if this will work, but I'm hoping it'll pull in the user email from the user table and update the user_email in the parkingspots table
+    }, {
+      where: {
+        id: req.body.id // Shaun - we will need to have this be equal to the parkingid number of the Reserve Spot button div (e.g.,<button type="submit" parkingid="2">Reserve Spot</button>)
+      }
+    }).then(function(dbParkingspot) {
+      res.json(dbParkingspot);
+    });
+  });
+
+  // PUT route for cancelling reservations
+  app.put("/cancelreservation", function(req, res) {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Parkingspot.update({
+      reservation_status: 0, // this will udpate the status in the parkingspots table to be available
+      reservation_start: "", // this will clear the start time, making it available for future reservations
+      reservation_end: "", // this will clear the end time, making it available for future reservations
+      user_email: "" // this will clear the user email, making it available for future reservations
+    }, {
+      where: {
+        id: req.body.id // Shaun - we will need to have this be equal to the parkingid number of the Reserve Spot button div (e.g.,<button type="submit" parkingid="2">Reserve Spot</button>)
+      }
+    }).then(function(dbParkingspot) {
+      res.json(dbParkingspot);
+    });
+  });
+// END CODE IN DEVELOPMENT ==============================================================================
+
 };

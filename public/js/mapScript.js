@@ -21,26 +21,41 @@ function initMap() {
   for (var i = 0, length = parkingSpots.length; i < length; i++) {
     var data = parkingSpots[i],
         latLng = new google.maps.LatLng(data.lat, data.lng); 
-  
+    
+    if (parkingSpots[i].reservation_status == 0 ) {
     // Creating a marker and putting it on the map
+    var greenMarker = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
     var marker = new google.maps.Marker({
       position: latLng,
       map: map,
+      icon: greenMarker,
       title: data.parking_name
     });
-    
-			// Creating a closure to retain the correct data, notice how I pass the current data in the loop into the closure (marker, data)
+    // Creating a closure to retain the correct data, notice how I pass the current data in the loop into the closure (marker, data)
 			(function(marker, data) {
-        
                 // Attaching a click event to the current marker
                 google.maps.event.addListener(marker, "click", function(e) {
-                  infoWindow.setContent(`Reservation Status: ${data.reservation_status}`);
+                  infoWindow.setContent(`<strong>${data.parking_name}</strong> <br> ${data.street_address}<br> ${data.city}, ${data.state} ${data.zip_code}`);
                   infoWindow.open(map, marker);
-                });
-        
-        
+                });     
               })(marker, data);
-        
+    } else {
+      var redMarker = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+        icon: redMarker,
+        title: data.parking_name
+      });
+      // Creating a closure to retain the correct data, notice how I pass the current data in the loop into the closure (marker, data)
+			(function(marker, data) {
+        // Attaching a click event to the current marker
+        google.maps.event.addListener(marker, "click", function(e) {
+          infoWindow.setContent(`<strong>${data.parking_name}</strong> <br> ${data.street_address}<br> ${data.city}, ${data.state} ${data.zip_code}`);
+          infoWindow.open(map, marker);
+        });     
+      })(marker, data);
+    }     
   }
 };
 
@@ -49,3 +64,8 @@ $(document).ready(function(){
     $('.modal').modal();
   
 });
+
+
+
+
+
