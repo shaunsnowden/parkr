@@ -9,17 +9,17 @@ module.exports = function(sequelize, DataTypes) {
     lat: DataTypes.DECIMAL(14,10),
     lng: DataTypes.DECIMAL(14,10),
     reservation_status: DataTypes.STRING,      
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
+    reservation_start: DataTypes.DATE,
+    reservation_end: DataTypes.DATE,
+    user_email: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true,
+      validate: {
+        isEmail: true
+      }
+    },
   });
-
-	Parkingspot.associate = function(models) {
-		// Associating Author with Posts
-		// When an Author is deleted, also delete any associated Posts
-		Parkingspot.hasMany(models.Reservation, {
-			onDelete: 'cascade'
-		});
-	};
 
   return Parkingspot;
 };

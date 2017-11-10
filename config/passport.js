@@ -14,15 +14,7 @@ passport.use(new LocalStrategy(
     db.User.findOne({
       where: {
         email: email
-      },
-      include: [
-        {
-          model: db.Reservation,
-          include: [
-            db.Parkingspot
-          ]
-        }
-      ]
+      }
     }).then(function (dbUser) {
       // If there's no user with the given email
       if (!dbUser) {

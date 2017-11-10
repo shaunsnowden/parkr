@@ -22,7 +22,10 @@ module.exports = function (app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
-      license_plate: req.body.license_plate
+      license_plate: req.body.license_plate,
+      car_make: req.body.car_make,
+      car_model: req.body.car_model,
+      car_color: req.body.car_color
     }).then(function () {
       res.redirect(307, "/api/login");
     }).catch(function (err) {
