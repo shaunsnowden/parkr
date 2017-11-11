@@ -5,10 +5,12 @@
       <a href="/" class="brand-logo" id="logo">PARKR </a>
       <ul class="right hide-on-med-and-down" id="head-nav-links">
         <li>
-          <a href="/login">Login</a>
+          <!-- Modal Trigger -->
+          <a class="waves-effect waves-light btn modal-trigger pulse" href="#loginModal">Login</a>
         </li>
         <li>
-          <a href="/signup">Sign Up</a>
+          <!-- Modal Trigger -->
+          <a class="waves-effect waves-light btn modal-trigger" href="#signUpModal">Sign Up</a>
         </li>
       </ul>
     </div>
@@ -24,18 +26,28 @@
     <div class="card-panel hoverable">
       <h3>User Profile</h3>
       <p>
-        <h4><i class="large material-icons">face</i><div id="userName">User Name</div></h4>
+        <h4>
+            <i class="large material-icons">face</i>
+          <span class="member-name"></span>
+        </h4>
+
+        <span class="license-plate"></span>
+        <span class="car-make"></span>
+        <span class="car-model"></span>
+        <span class="car-color"></span>
+        <span class="parking-name"></span>
+
       </p>
       <p>
         <h5>Current Reservation:</h5>
-        <div id="currentResDiv">Spot Detail</div>
+        <span class="parking-name"></span>
       </p>
       <br>
-      <a href="/">
+      {{!-- <a href="/">
         <button class="btn waves-effect waves-light" type="submit" name="action" id="extendButton">Extend Reservation
           <i class="material-icons right">add_circle</i>
         </button>
-      </a>
+      </a> --}}
       </br>
       <a href="/">
         <button class="btn waves-effect waves-light" type="submit" name="action" id="cancelButton">Cancel Reservation
@@ -48,31 +60,137 @@
   <div class="col l9 z-depth-5 mainpanel">
     <h2>On Demand Parking</h2>
     <div id="mainpanel-content">
-      <div id="mapWrapper" style="width:100%;height:500px;">mapWrapper
-        <div id="map" style="width:100%;height:100%;">TARGET DIV FOR MAP</div>
+      <div id="mapWrapper" style="width:100%;height:300px;">
+        <div id="map" style="width:100%;height:100%;"></div>
       </div>
       <br>
       <div class="divider"></div>
       <br>
+    </div>
 
 
-      <div
       <div id="spotListingWrapper">
-
         <div id="parkingSpotList">
-          <ul>
-            {{#each dbParkingspot}} 
-              <br>
-              <li>
-                <p>{{this.id}}. {{this.parking_name}}</p>
-                <button type="spotListButton" parkingID={{this.id}} spotLat={{this.lat}} spotLng={{this.lng}}>Reserve Spot</button>
-              </li>
-            {{/each}}
-          </ul>
+          <table class="highlight striped">
+            <thead>   
+                <tr>
+                  <th><h5>Parking Number</h5></th>
+                  <th><h5>Parking Spot</h5></th>
+                  <th><h5>Address</h5></th>
+                  <th><h5>Reservation</h5></th>
+                </tr>
+            </thead>
+            <tbody>
+              <ul>
+                {{#each dbParkingspot}}
+                <tr>
+                  <td class="centered">{{this.id}}</td>
+                  <td>{{this.parking_name}}</td>
+                  <td>{{this.street_address}}</td>
+                  <td><button type="spotListButton" parkingID={{this.id}} spotLat={{this.lat}} spotLng={{this.lng}}>Reserve Spot</button></td>
+                </tr>
+                {{/each}}
+              </ul>
+            </tbody>
+          </table>
         </div>
-      </div>
       </div>
     </div>
   </div>
 </div>
 
+
+
+<!-- SIGNUP Modal Structures -->
+<div id="signUpModal" class="modal">
+  <div class="modal-content">
+    <i class="fa fa-car fa-4x" aria-hidden="true" id=logo-icon></i>
+    <a href="/" class="brand-logo" id="logo">PARKR </a>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Sign Up Form</h2>
+        <form class="signup">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="email-input" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="password-input" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputlLicense1">License Plate</label>
+              <input type="text" class="form-control" id="license-input" placeholder="License Plate #">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputlLicense1">Car Make</label>
+              <input type="text" class="form-control" id="car-make-input" placeholder="Make of Car">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputlLicense1">Car Model</label>
+              <input type="text" class="form-control" id="car-model-input" placeholder="Model of Car">
+            </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="password-input" placeholder="Password">
+          </div>
+          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <span class="msg"></span>
+          </div>
+          <button type="submit" class="btn btn-default">Sign Up</button>
+        </form>
+        </br>
+        <a class="waves-effect waves-light btn modal-trigger" href="#loginModal">Or Login Here</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal-footer">
+    <a href="/" class="modal-action modal-close waves-effect waves-green btn-flat"></a>
+  </div>
+
+</div>
+{{!-- END SIGNUP MODAL --}}
+
+
+
+<!-- Modal Structures -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <i class="fa fa-car fa-4x" aria-hidden="true" id=logo-icon></i>
+    <a href="/" class="brand-logo" id="logo">PARKR </a>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Login Form</h2>
+        <form class="login">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="email-input" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="password-input" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-default">Login</button>
+        </form>
+        <br />
+        <p>
+          <a class="waves-effect waves-light btn modal-trigger" href="#signUpModal">Or Sign Up Here</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+  </div>
+</div>
+{{!-- END OF LOGIN MODAL --}}
