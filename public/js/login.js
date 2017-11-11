@@ -1,3 +1,5 @@
+console.log("\n \n login.js Imported \n")
+
 $(document).ready(function() {
   // Getting references to our form and inputs
   var loginForm = $("form.login");
@@ -11,6 +13,7 @@ $(document).ready(function() {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim()
     };
+    console.log(userData);
 
     if (!userData.email || !userData.password) {
       return;

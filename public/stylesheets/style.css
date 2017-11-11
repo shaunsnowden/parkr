@@ -2,6 +2,9 @@ html{
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
 }
 
+#userDetail{
+  line-height: 200%;
+}
 
 form.signup,
 form.login {

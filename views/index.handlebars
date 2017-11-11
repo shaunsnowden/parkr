@@ -28,16 +28,23 @@
       <p>
         <h4>
             <i class="large material-icons">face</i>
-          <span class="member-name"></span>
         </h4>
-
+        <div id="userDetail">
+        <br>
+        <span class="member-name"></span>
+        <br>
         <span class="license-plate"></span>
+        <br>
         <span class="car-make"></span>
+        <br>
         <span class="car-model"></span>
+        <br>
         <span class="car-color"></span>
+        <br>
         <span class="parking-name"></span>
-
+        </div>
       </p>
+
       <p>
         <h5>Current Reservation:</h5>
         <span class="parking-name"></span>
@@ -181,16 +188,17 @@
             <label for="exampleInputPassword1">Password</label>
             <input type="password" class="form-control" id="password-input" placeholder="Password">
           </div>
-          <button type="submit" class="btn btn-default">Login</button>
+          <button type="submit" class="btn btn-default" data-dismiss="modal">Login</button>
         </form>
-        <br />
-        <p>
-          <a class="waves-effect waves-light btn modal-trigger" href="#signUpModal">Or Sign Up Here</a>
-        </p>
+        
       </div>
     </div>
   </div>
   <div class="modal-footer">
+    <br>
+    <p>
+      <a class="waves-effect waves-light btn modal-trigger" data-dismiss="modal" href="#signUpModal">Or Sign Up Here</a>
+    </p>
   </div>
 </div>
 {{!-- END OF LOGIN MODAL --}}
