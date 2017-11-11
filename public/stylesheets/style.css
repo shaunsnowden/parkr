@@ -1,3 +1,8 @@
+html{
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
+
 form.signup,
 form.login {
   margin-top: 50px;
@@ -11,10 +16,16 @@ form.login {
   background-color: black;
 };
 
-.button, .btn, #extendButton, #cancelButton {
-  margin: 15pt;
+#logo {
+ font-family: 'Wallpoet', cursive;
+ font-size: 40pt;
 }
 
+.button, .btn, #extendButton, #cancelButton {
+  margin-bottom: 15pt;
+};
+
 body{
-  background-color: rgba(102, 238, 245, 0.26);
-}
+  background-color: rgba(43, 51, 51, 0);
+  background-image: url("assets/background.jpg");
+};
