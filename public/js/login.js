@@ -33,6 +33,15 @@ $(document).ready(function() {
     }).then(function(data) {
       // this data object is what is being served by the backend.
       window.location.replace(data);
+
+      alert("handler called!");
+      $.get("/api/user_data").then(function (data) {
+        $(".member-name").text(data.email);
+        $(".license-plate").text(data.license_plate);
+        $(".car-make").text(data.car_make);
+        $(".car-model").text(data.car_model);
+        $(".car-color").text(data.car_color);
+      });
       // If there's an error, log the error
     }).catch(function(err) {
       console.log(err);
